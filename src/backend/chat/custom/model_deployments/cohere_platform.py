@@ -34,7 +34,7 @@ class CohereDeployment(BaseDeployment):
             "authorization": f"Bearer {cls.api_key}",
         }
 
-        response = requests.get(url, headers=headers)
+        response = requests.get(url, headers=headers, timeout=60)
 
         if not response.ok:
             logging.warning("Couldn't get models from Cohere API.")
