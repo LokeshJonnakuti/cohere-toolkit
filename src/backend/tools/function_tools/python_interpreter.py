@@ -26,7 +26,7 @@ class PythonInterpreterFunctionTool(BaseFunctionTool):
             raise Exception("Python Interpreter tool called while URL not set")
 
         code = parameters.get("code", "")
-        res = requests.post(self.interpreter_url, json={"code": code})
+        res = requests.post(self.interpreter_url, json={"code": code}, timeout=60)
 
         return res.json()
 

@@ -25,6 +25,6 @@ class ConnectorRetriever(BaseRetrieval):
             "Content-Type": "application/json",
             "Authorization": f"Bearer {self.auth}",
         }
-        r = requests.post(self.url, json=body, headers=headers)
+        r = requests.post(self.url, json=body, headers=headers, timeout=60)
         print(r.json())
         return r.json()["results"]
