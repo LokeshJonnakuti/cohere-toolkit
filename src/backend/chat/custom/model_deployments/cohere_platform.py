@@ -3,8 +3,8 @@ import os
 from typing import Any, Dict, Generator, List
 
 import cohere
-import requests
 from cohere.types import StreamedChatResponse
+from security import safe_requests
 
 from backend.chat.custom.model_deployments.base import BaseDeployment
 from backend.schemas.cohere_chat import CohereChatRequest
@@ -34,7 +34,7 @@ class CohereDeployment(BaseDeployment):
             "authorization": f"Bearer {cls.api_key}",
         }
 
-        response = requests.get(url, headers=headers)
+        response = safe_requests.get(url, headers=headers)
 
         if not response.ok:
             logging.warning("Couldn't get models from Cohere API.")
