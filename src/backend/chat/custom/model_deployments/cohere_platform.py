@@ -4,10 +4,10 @@ from typing import Any, Dict, Generator, List
 
 import cohere
 from cohere.types import StreamedChatResponse
+from security import safe_requests
 
 from backend.chat.custom.model_deployments.base import BaseDeployment
 from backend.schemas.cohere_chat import CohereChatRequest
-from security import safe_requests
 
 
 class CohereDeployment(BaseDeployment):
